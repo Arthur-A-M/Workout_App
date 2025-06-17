@@ -1,8 +1,8 @@
-import MyPager from '@/components/PageViwer';
+import Exercises from "@/components/Exercises";
 
 export default function HomeScreen() {
   return (
-    <MyPager />
+    <Exercises />
   );
 }
 
