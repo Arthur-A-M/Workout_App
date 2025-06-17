@@ -18,7 +18,16 @@ export default function Timer() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "white" }}>
       <Pressable
-        style={{ backgroundColor: running ? "gray" : "lightgray" }}
+        style={{ 
+            height: 100, 
+            width: 100, 
+            justifyContent: "center", 
+            alignItems: "center",
+            borderRadius: 50,
+            borderWidth: 2,
+            borderColor: "black",
+            backgroundColor: running ? "gray" : "lightgray" 
+        }}
         onPress={() => setRunning(!running)}
       >
         <Text>Timer</Text>
