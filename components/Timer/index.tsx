@@ -30,8 +30,7 @@ export default function Timer() {
         }}
         onPress={() => setRunning(!running)}
       >
-        <Text>Timer</Text>
-        {running && <Text>{time} seconds</Text>}
+        {running ? <Text>{time} seconds</Text> : <Text>Timer</Text>}
       </Pressable>
     </View>
   );
