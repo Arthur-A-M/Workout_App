@@ -3934,7 +3934,7 @@ prompts@^2.3.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.5.10, prop-types@^15.8.1:
   version "15.8.1"
   dependencies:
     loose-envify "^1.4.0"
@@ -4018,6 +4018,13 @@ react-native-pager-view@^6.7.1:
   resolved "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-6.7.1.tgz"
   integrity sha512-cBSr6xw4g5N7Kd3VGWcf+kmaH7iBWb0DXAf2bVo3bXkzBcBbTOmYSvc0LVLHhUPW8nEq5WjT9LCIYAzgF++EXw==
 
+react-native-pin-code@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.npmjs.org/react-native-pin-code/-/react-native-pin-code-0.5.3.tgz"
+  integrity sha512-vlHHjQGLagdtaaCWs5bYUw02i58BvGazrzUfrBs+0HfWfNXRYR4ZkJOzvlreT541Hm4+TyQa4JX2Ppt0Sv9ceA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-reanimated@*, react-native-reanimated@~3.17.4:
   version "3.17.5"
   dependencies:
@@ -4062,7 +4069,7 @@ react-native-webview@*, react-native-webview@13.13.5:
     escape-string-regexp "^4.0.0"
     invariant "2.2.4"
 
-react-native@*, react-native@0.79.3:
+react-native@*, react-native@>=0.40, react-native@0.79.3:
   version "0.79.3"
   dependencies:
     "@jest/create-cache-key-function" "^29.7.0"
@@ -4105,7 +4112,7 @@ react-native@*, react-native@0.79.3:
 react-refresh@^0.14.0, react-refresh@^0.14.2:
   version "0.14.2"
 
-react@*, "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0", react@^19.0.0, "react@>= 18.2.0", react@>=16.8, react@>=17.0.0, react@19.0.0:
+react@*, "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0", react@^19.0.0, "react@>= 18.2.0", react@>=15.4.0, react@>=16.8, react@>=17.0.0, react@19.0.0:
   version "19.0.0"
 
 reflect.getprototypeof@^1.0.6, reflect.getprototypeof@^1.0.9:
