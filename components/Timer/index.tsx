@@ -8,7 +8,10 @@ export default function Timer() {
   useEffect(() => {
     if (running) {
       const intervalId = setInterval(() => setTime((prevTime) => prevTime + 1), 1000);
-      return () => clearInterval(intervalId);
+      return () => {
+        clearInterval(intervalId);
+        setTime(0);
+      };
     }
   }, [running]);
 
