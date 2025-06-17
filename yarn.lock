@@ -4000,6 +4000,11 @@ react-is@^18.0.0:
 react-is@^19.1.0:
   version "19.1.0"
 
+react-native-countdown-timer-hooks@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/react-native-countdown-timer-hooks/-/react-native-countdown-timer-hooks-1.0.5.tgz"
+  integrity sha512-VYMrf0gK/0RmxgXOhhM7axwU0Ho5RT3rLOhBSiPOoj403ZpvkPhch7mj53SiTAjSLNLrjkCrtCV7ccE+gkZAig==
+
 react-native-edge-to-edge@1.6.0:
   version "1.6.0"
 

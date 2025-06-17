@@ -31,6 +31,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.3",
+    "react-native-countdown-timer-hooks": "^1.0.5",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-pager-view": "^6.7.1",
     "react-native-pin-code": "^0.5.3",
