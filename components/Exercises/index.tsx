@@ -17,18 +17,18 @@ const ExerciseList: ExerciseItem[] = [
 export default function Exercises() {
     function Exercise({ key, name }: ExerciseItem) {
         return (
-            <View style={[styles.page, { height: "100%", width: "100%" }]} key={key}>
-                <View style={{ height: 200, width: 150, backgroundColor: "lightgray" }}>
+            <View style={styles.page} key={key}>
+                <View style={styles.box}>
                     <Text>{name}</Text>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
+                    <View style={styles.boxRow}>
                         <Text>Séries</Text>
                         <Text>3</Text>
                     </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
+                    <View style={styles.boxRow}>
                         <Text>Repetições</Text>
                         <Text>8</Text>
                     </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
+                    <View style={styles.boxRow}>
                         <Text>Carga</Text>
                         <Text>20</Text>
                     </View>
