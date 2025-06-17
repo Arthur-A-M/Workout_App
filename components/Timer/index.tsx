@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
+import { styles } from "./styles";
+
 export default function Timer() {
     const [running, setRunning] = useState(false);
     const [time, setTime] = useState(0);
@@ -22,18 +24,9 @@ export default function Timer() {
     };
 
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "white" }}>
+        <View style={styles.container}>
             <Pressable
-                style={{
-                    height: 100,
-                    width: 100,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: 50,
-                    borderWidth: 2,
-                    borderColor: "black",
-                    backgroundColor: running ? "gray" : "lightgray"
-                }}
+                style={[styles.button, { backgroundColor: running ? "gray" : "lightgray" }]}
                 onPress={() => setRunning(!running)}
             >
                 {running ? <Text>{formatTime(time)}</Text> : <Text>Descansar</Text>}
