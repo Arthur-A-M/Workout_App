@@ -2,10 +2,13 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
-import { ExerciseItem, ExerciseList } from './data';
+import { ExerciseItem, ExerciseListA, ExerciseListB } from './data';
 import { styles } from './styles';
 
-export default function Exercises() {
+export default function Exercises({serie = 'A'}: {serie: 'A' | 'B'}) {
+
+    const seriesList: ExerciseItem[] = serie === 'A' ? ExerciseListA : ExerciseListB;
+
     function Exercise({
         key,
         name,
@@ -43,7 +46,7 @@ export default function Exercises() {
     return (
         <View style={styles.container}>
             <PagerView style={styles.container} initialPage={0}>
-                {ExerciseList.map((item) => (
+                {seriesList.map((item) => (
                     <Exercise
                         key={item.key}
                         name={item.name}
