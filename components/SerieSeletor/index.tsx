@@ -9,12 +9,11 @@ export default function SerieSeletor({ setSerie }: { setSerie: React.Dispatch<Re
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={() => setSerie(listOfSeries[0].name)} style={{ marginBottom: 10 }}>
-                <Text>Série {listOfSeries[0].name}</Text>
-            </Pressable>
-            <Pressable onPress={() => setSerie(listOfSeries[1].name)}>
-                <Text>Série {listOfSeries[1].name}</Text>
-            </Pressable>
+            {listOfSeries.map((serie, index) => (
+                <Pressable key={serie.name} onPress={() => setSerie(serie.name)} style={{ marginBottom: index !== listOfSeries.length - 1 ? 10 : 0 }}>
+                    <Text>Série {serie.name}</Text>
+                </Pressable>
+            ))}
         </View>
     );
 }
