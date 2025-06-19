@@ -6,6 +6,8 @@ export type ExerciseItem = {
     weight: number;
 };
 
+export type SeriesNames = "A" | "B" | "C" | "D" | "E" | "F" | "G" | null;
+
 export const ExerciseListA: ExerciseItem[] = [
     {
         key: "1",
@@ -110,7 +112,7 @@ export const ExerciseListB: ExerciseItem[] = [
     },
 ];
 
-export const listOfSeries: { name: 'A' | 'B' | 'C' | 'D' | 'E' | 'F'| 'G', list: ExerciseItem[] }[] = [
+export const listOfSeries: { name: SeriesNames, list: ExerciseItem[]}[] = [
     {
         name: 'A',
         list: ExerciseListA

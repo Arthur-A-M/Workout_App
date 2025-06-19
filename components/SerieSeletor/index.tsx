@@ -1,11 +1,11 @@
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 
-import { listOfSeries } from "@/constants/Data";
+import { listOfSeries, SeriesNames } from "@/constants/Data";
 
 import { styles } from "./styles";
 
-export default function SerieSeletor({ setSerie }: { setSerie: React.Dispatch<React.SetStateAction<'A' | 'B' | 'C' | 'D' | 'E' | 'F'| 'G'| null>> }) {
+export default function SerieSeletor({ setSerie }: { setSerie: React.Dispatch<React.SetStateAction<SeriesNames | null>> }) {
 
     return (
         <View style={styles.container}>
