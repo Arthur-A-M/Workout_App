@@ -1,29 +1,16 @@
 import Exercises from "@/components/Exercises";
+import SerieSeletor from "@/components/SerieSeletor";
 import Timer from "@/components/Timer";
 import { useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { View } from "react-native";
 
 export default function HomeScreen() {
 
-  const [serie, setSerie] = useState<'A' | 'B' | null>(null);
-
-  function chooseSerie(newSerie: 'A' | 'B') {
-    if (newSerie === serie) {
-      return;
-    }
-    setSerie(newSerie);
-  }
+  const [serie, setSerie]: ['A' | 'B' | null, React.Dispatch<React.SetStateAction<'A' | 'B' | null>>] = useState<'A' | 'B' | null>(null);
 
   if (serie === null) {
     return (
-      <View style={{ flex: 1, flexDirection: "column", justifyContent: "center", alignItems: "center", backgroundColor: "white" }}>
-        <Pressable onPress={() => chooseSerie('A')} style={{ marginBottom: 10 }}>
-          <Text>Exercícios A</Text>
-        </Pressable>
-        <Pressable onPress={() => chooseSerie('B')}>
-          <Text>Exercícios B</Text>
-        </Pressable>
-      </View>
+        <SerieSeletor setSerie={setSerie} />
     );
   } else {
     return (
