@@ -2,12 +2,16 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
-import { ExerciseItem, ExerciseListA, ExerciseListB } from '@/constants/Data';
+import { ExerciseItem, listOfSeries } from '@/constants/Data';
 import { styles } from './styles';
 
-export default function Exercises({serie = 'A'}: {serie: 'A' | 'B'}) {
+export default function Exercises({serie = 'A'}: {serie: "A" | "B" | "C" | "D" | "E" | "F" | "G" | null}) {
 
-    const seriesList: ExerciseItem[] = serie === 'A' ? ExerciseListA : ExerciseListB;
+    function ReturnSerie(serie: "A" | "B" | "C" | "D" | "E" | "F" | "G" | null): ExerciseItem[] {
+        return listOfSeries.find(s => s.name === serie)?.list || listOfSeries[0].list;
+    }
+
+    const seriesList: ExerciseItem[] = ReturnSerie(serie);
 
     function Exercise({
         key,
