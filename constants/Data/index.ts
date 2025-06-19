@@ -20,7 +20,7 @@ export const ExerciseListA: ExerciseItem[] = [
         series: 3,
         repetitions: 8,
         weight: 55
-    }, 
+    },
     {
         key: "3",
         name: "Supino declinado maquina",
@@ -28,7 +28,7 @@ export const ExerciseListA: ExerciseItem[] = [
         repetitions: 8,
         weight: 40
     },
-        {
+    {
         key: "4",
         name: "Supino maquina",
         series: 3,
@@ -41,7 +41,7 @@ export const ExerciseListA: ExerciseItem[] = [
         series: 3,
         repetitions: 8,
         weight: 50
-    }, 
+    },
     {
         key: "6",
         name: "Cadeira extensora",
@@ -49,7 +49,7 @@ export const ExerciseListA: ExerciseItem[] = [
         repetitions: 11,
         weight: 6
     },
-        {
+    {
         key: "7",
         name: "Panturilha máquina",
         series: 3,
@@ -72,7 +72,7 @@ export const ExerciseListB: ExerciseItem[] = [
         series: 3,
         repetitions: 8,
         weight: 26
-    }, 
+    },
     {
         key: "3",
         name: "Rosca concentrada",
@@ -80,7 +80,7 @@ export const ExerciseListB: ExerciseItem[] = [
         repetitions: 8,
         weight: 12
     },
-        {
+    {
         key: "4",
         name: "Cadeira adutora",
         series: 3,
@@ -93,7 +93,7 @@ export const ExerciseListB: ExerciseItem[] = [
         series: 3,
         repetitions: 8,
         weight: 59
-    }, 
+    },
     {
         key: "6",
         name: "Stiff ",
@@ -101,7 +101,7 @@ export const ExerciseListB: ExerciseItem[] = [
         repetitions: 11,
         weight: 5
     },
-        {
+    {
         key: "7",
         name: "Elevação pélvica com barra",
         series: 3,
@@ -109,3 +109,14 @@ export const ExerciseListB: ExerciseItem[] = [
         weight: 10
     },
 ];
+
+export const listOfSeries: { name: 'A' | 'B' | 'C' | 'D' | 'E' | 'F'| 'G', list: ExerciseItem[] }[] = [
+    {
+        name: 'A',
+        list: ExerciseListA
+    },
+    {
+        name: 'B',
+        list: ExerciseListB
+    }
+]

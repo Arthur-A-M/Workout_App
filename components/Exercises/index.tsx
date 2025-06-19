@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
-import { ExerciseItem, ExerciseListA, ExerciseListB } from './data';
+import { ExerciseItem, ExerciseListA, ExerciseListB } from '@/constants/Data';
 import { styles } from './styles';
 
 export default function Exercises({serie = 'A'}: {serie: 'A' | 'B'}) {
