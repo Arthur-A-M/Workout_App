@@ -6,17 +6,70 @@ import { ExerciseItem, listOfSeries, SeriesNames } from '@/constants/Data';
 import { styles } from './styles';
 
 export default function ExercisesEditor({ serie = 'A', setSerie }: { serie: SeriesNames | null | undefined, setSerie: React.Dispatch<React.SetStateAction<SeriesNames | null>> }) {
-    const [listOfSeriesHook, setListOfSeriesHook] = useState<{ name: SeriesNames, list: ExerciseItem[] }[]>([]);
+    const [listOfSeriesHook, setListOfSeriesHook] = useState<{ name: SeriesNames, list: ExerciseItem[] }[]>(listOfSeries);
 
     function ReturnSerie(serie: SeriesNames | null): ExerciseItem[] {
-        return listOfSeries.find(s => s.name === serie)?.list || listOfSeries[0].list;
+        return listOfSeriesHook.find(s => s.name === serie)?.list || listOfSeriesHook[0].list;
     }
 
     const seriesList: ExerciseItem[] = ReturnSerie(serie);
 
+    const [seriesListHook, setSeriesListHook] = useState<ExerciseItem[]>(seriesList);
+
     function SaveSerie() {
+        const newListOfSeriesHook: { name: SeriesNames, list: ExerciseItem[] }[] = listOfSeriesHook.map(item => {
+            if (item.name === serie) {
+                return {
+                    name: serie,
+                    list: seriesListHook
+                };
+            }
+            return item;
+        });
+        setListOfSeriesHook(newListOfSeriesHook);
         console.log('Save atempeted');
     }
+
+    function SaveExercise({
+        key,
+        name,
+        series,
+        repetitions,
+        weight
+    }: ExerciseItem) {
+        const newSeriesListHook = seriesListHook.map(item => {
+            if (item.name === name) {
+                return {
+                    key,
+                    name,
+                    series,
+                    repetitions,
+                    weight
+                };
+            }
+            return item;
+        });
+        setSeriesListHook(newSeriesListHook);
+    }
+    /*
+    useEffect(() => {
+        const storeData = async (value: { name: SeriesNames, list: ExerciseItem[] }[] | null) => {
+            if (value === null) {
+                console.error("storeData: value is null");
+                return;
+            }
+
+            try {
+                const jsonValue = JSON.stringify(value);
+                await AsyncStorage.setItem('userdata', jsonValue);
+            } catch (error) {
+                console.error("storeData:", error);
+            }
+        };
+
+        storeData(listOfSeriesHook);
+    }, [listOfSeriesHook]);
+    */
 
     function Exercise({
         key,
@@ -25,7 +78,8 @@ export default function ExercisesEditor({ serie = 'A', setSerie }: { serie: Seri
         repetitions,
         weight
     }: ExerciseItem) {
-        const [exercise, setSeries] = useState({
+        const [exercise, setSeries]: [ExerciseItem, React.Dispatch<React.SetStateAction<ExerciseItem>>] = useState({
+            key,
             name,
             series,
             repetitions,
@@ -63,6 +117,11 @@ export default function ExercisesEditor({ serie = 'A', setSerie }: { serie: Seri
                         />
                     </View>
                 </View>
+                <View>
+                    <Pressable style={styles.boxRow} onPress={() => SaveExercise(exercise)}>
+                        <Text>Salvar</Text>
+                    </Pressable>
+                </View>
             </View>
         );
     }
@@ -71,7 +130,7 @@ export default function ExercisesEditor({ serie = 'A', setSerie }: { serie: Seri
         <View style={styles.container}>
             <Pressable style={styles.backButton} onPress={() => setSerie(null)}><Text>⬅️</Text></Pressable>
             <PagerView style={styles.container} initialPage={0}>
-                {seriesList.map((item) => (
+                {seriesListHook.map((item) => (
                     <Exercise
                         key={item.key}
                         name={item.name}
