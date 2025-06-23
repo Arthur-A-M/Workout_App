@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Text, View } from "react-native";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import SerieEditor from "@/components/SerieEditor";
 import type { ExerciseItem, SeriesNames } from "@/constants/Data";
 import { listOfSeries } from "@/constants/Data";
 
 export default function TabTwoScreen() {
   const [listOfSeriesHook, setListOfSeriesHook] = useState<{ name: SeriesNames, list: ExerciseItem[] }[]>([]);
+  const [serie, setSerie]: [SeriesNames | null, React.Dispatch<React.SetStateAction<SeriesNames | null>>] = useState<SeriesNames | null>(null);
   const storeData = async (value: { name: SeriesNames, list: ExerciseItem[] }[] | null) => {
     if (value === null) {
       console.error("storeData: value is null");
@@ -47,22 +49,27 @@ export default function TabTwoScreen() {
 
   useEffect(() => {
     console.log('listOfSeriesHook', listOfSeriesHook);
-  }, [listOfSeriesHook]);
+    console.log('serie', serie);
+  }, [listOfSeriesHook, serie]);
 
   if (listOfSeriesHook.length === 0) {
-      return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
-      <Pressable onPress={checkForSeries}>
-        <Text>Check for series</Text>
-      </Pressable>
-    </View>
-  );
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  } else if (serie === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
+        <SerieEditor setSerie={setSerie} />
+      </View>
+    );
   } else {
-      return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
-        <Text>Dados checados</Text>
-    </View>
-  );
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
+        <Text>Serie: {serie}</Text>
+      </View>
+    );
   }
 
 }
