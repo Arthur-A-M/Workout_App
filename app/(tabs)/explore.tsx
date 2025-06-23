@@ -49,12 +49,21 @@ export default function TabTwoScreen() {
     console.log('listOfSeriesHook', listOfSeriesHook);
   }, [listOfSeriesHook]);
 
-  return (
+  if (listOfSeriesHook.length === 0) {
+      return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
       <Pressable onPress={checkForSeries}>
         <Text>Check for series</Text>
       </Pressable>
     </View>
   );
+  } else {
+      return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
+        <Text>Dados checados</Text>
+    </View>
+  );
+  }
+
 }
 
