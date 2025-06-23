@@ -11,12 +11,12 @@ export default function HomeScreen() {
 
   if (serie === null) {
     return (
-        <SerieSeletor setSerie={setSerie} />
+      <SerieSeletor setSerie={setSerie} />
     );
   } else {
     return (
       <View style={{ flex: 1, flexDirection: "column" }}>
-        <Exercises serie={serie} />
+        <Exercises serie={serie} setSerie={setSerie} />
         <Timer />
       </View>
     );

@@ -6,6 +6,12 @@ export const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: 'white',
   },
+  backButton: {
+    position: "absolute",
+    top: 50,
+    left: 50,
+    zIndex: 1
+  },
   page: {
     height: "100%",
     width: "100%",

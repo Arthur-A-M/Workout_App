@@ -5,7 +5,7 @@ import PagerView from 'react-native-pager-view';
 import { ExerciseItem, listOfSeries, SeriesNames } from '@/constants/Data';
 import { styles } from './styles';
 
-export default function Exercises({serie = 'A'}: {serie: SeriesNames | null}) {
+export default function Exercises({serie = 'A', setSerie}: {serie: SeriesNames | null | undefined, setSerie: React.Dispatch<React.SetStateAction<SeriesNames | null>>}) {
 
     function ReturnSerie(serie: SeriesNames | null): ExerciseItem[] {
         return listOfSeries.find(s => s.name === serie)?.list || listOfSeries[0].list;
@@ -49,6 +49,7 @@ export default function Exercises({serie = 'A'}: {serie: SeriesNames | null}) {
 
     return (
         <View style={styles.container}>
+            <Pressable style={styles.backButton} onPress={() => setSerie(null)}><Text>⬅️</Text></Pressable>
             <PagerView style={styles.container} initialPage={0}>
                 {seriesList.map((item) => (
                     <Exercise
