@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import ExercisesEditor from "@/components/ExercisesEditor";
 import SerieEditor from "@/components/SerieEditor";
 import type { ExerciseItem, SeriesNames } from "@/constants/Data";
 import { listOfSeries } from "@/constants/Data";
@@ -52,6 +53,10 @@ export default function TabTwoScreen() {
     console.log('serie', serie);
   }, [listOfSeriesHook, serie]);
 
+  function SaveSerie() {
+    console.log('Save atempeted');
+  }
+
   if (listOfSeriesHook.length === 0) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
@@ -66,11 +71,10 @@ export default function TabTwoScreen() {
     );
   } else {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
-        <Text>Serie: {serie}</Text>
+      <View style={{ flex: 1, flexDirection: "column" }}>
+        <ExercisesEditor serie={serie} setSerie={setSerie} />
       </View>
     );
   }
-
 }
 
