@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -6,6 +7,7 @@ import type { ExerciseItem, SeriesNames } from "@/constants/Data";
 import { listOfSeries } from "@/constants/Data";
 
 export default function TabTwoScreen() {
+  const [listOfSeriesHook, setListOfSeriesHook] = useState<{ name: SeriesNames, list: ExerciseItem[] }[]>([]);
   const storeData = async (value: { name: SeriesNames, list: ExerciseItem[] }[] | null) => {
     if (value === null) {
       console.error("storeData: value is null");
@@ -35,9 +37,17 @@ export default function TabTwoScreen() {
     if (data === null) {
       storeData(listOfSeries);
     } else {
-      return;
+      return setListOfSeriesHook(data);
     }
   }
+
+  useEffect(() => {
+    checkForSeries();
+  }, []);
+
+  useEffect(() => {
+    console.log('listOfSeriesHook', listOfSeriesHook);
+  }, [listOfSeriesHook]);
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
