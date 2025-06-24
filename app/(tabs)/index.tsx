@@ -6,7 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 
+type listOfSeriesType = { name: SeriesNames; list: ExerciseItem[]; }[]
+
 export default function HomeScreen() {
+  const [listOfSeriesHook, setListOfSeriesHook]: [listOfSeriesType|null, React.Dispatch<React.SetStateAction<listOfSeriesType|null>>] = useState<listOfSeriesType|null>(null);
   const [serie, setSerie]: [SeriesNames | null, React.Dispatch<React.SetStateAction<SeriesNames | null>>] = useState<SeriesNames | null>(null);
 
   const getData = async () => {
@@ -19,10 +22,7 @@ export default function HomeScreen() {
   };
 
   const storeData = async (
-    series: {
-      name: SeriesNames;
-      list: ExerciseItem[];
-    }[]
+    series: listOfSeriesType
   ) => {
     try {
       const jsonValue = JSON.stringify(series);
@@ -35,11 +35,11 @@ export default function HomeScreen() {
   useEffect(() => {
     getData().then(data => {
       if (data) {
-        console.log('data', data);
+        setListOfSeriesHook(data);
       } else {
         storeData(listOfSeries).then(() => {
           getData().then(data => {
-            console.log('data', data);
+            setListOfSeriesHook(data);
           });
         })
       }
