@@ -1,7 +1,7 @@
 import Exercises from "@/components/Exercises";
 import SerieSeletor from "@/components/SerieSeletor";
 import Timer from "@/components/Timer";
-import { SeriesNames } from "@/constants/Data";
+import { ExerciseItem, listOfSeries, SeriesNames } from '@/constants/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { View } from "react-native";
@@ -18,10 +18,30 @@ export default function HomeScreen() {
     }
   };
 
+  const storeData = async (
+    series: {
+      name: SeriesNames;
+      list: ExerciseItem[];
+    }[]
+  ) => {
+    try {
+      const jsonValue = JSON.stringify(series);
+      await AsyncStorage.setItem('userdata', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
+
   useEffect(() => {
     getData().then(data => {
       if (data) {
         console.log('data', data);
+      } else {
+        storeData(listOfSeries).then(() => {
+          getData().then(data => {
+            console.log('data', data);
+          });
+        })
       }
     });
   }, []);
