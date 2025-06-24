@@ -28,10 +28,10 @@ export default function HomeScreen() {
     return (
       <SerieSeletor setSerie={setSerie} />
     );
-  } else {
+  } else if (listOfSeriesHook !== null) {
     return (
       <View style={{ flex: 1, flexDirection: "column" }}>
-        <Exercises serie={serie} setSerie={setSerie} />
+        <Exercises serie={serie} setSerie={setSerie} listOfSeries={listOfSeriesHook} />
         <Timer />
       </View>
     );

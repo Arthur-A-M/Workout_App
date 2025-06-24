@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
-import { ExerciseItem, listOfSeries, SeriesNames } from '@/constants/Data';
+import { ExerciseItem, SeriesNames, listOfSeriesType } from '@/constants/Data';
 import { styles } from './styles';
 
-export default function Exercises({serie = 'A', setSerie}: {serie: SeriesNames | null | undefined, setSerie: React.Dispatch<React.SetStateAction<SeriesNames | null>>}) {
+export default function Exercises({serie = 'A', setSerie, listOfSeries}: {serie: SeriesNames | null | undefined, setSerie: React.Dispatch<React.SetStateAction<SeriesNames | null>>, listOfSeries: listOfSeriesType}) {
 
     function ReturnSerie(serie: SeriesNames | null): ExerciseItem[] {
         return listOfSeries.find(s => s.name === serie)?.list || listOfSeries[0].list;
