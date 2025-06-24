@@ -24,9 +24,9 @@ export default function HomeScreen() {
     });
   }, []);
 
-  if (serie === null) {
+  if (serie === null && listOfSeriesHook !== null) {
     return (
-      <SerieSeletor setSerie={setSerie} />
+      <SerieSeletor setSerie={setSerie} listOfSeries={listOfSeriesHook} />
     );
   } else if (listOfSeriesHook !== null) {
     return (
