@@ -1,11 +1,8 @@
-import { ActivityIndicator, View } from "react-native";
-
+import Loading from "@/components/Loading";
 
 export default function TabTwoScreen() {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+      <Loading />
     );
 }
 
