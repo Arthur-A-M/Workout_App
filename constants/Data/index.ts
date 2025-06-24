@@ -8,6 +8,8 @@ export type ExerciseItem = {
 
 export type SeriesNames = "A" | "B" | "C" | "D" | "E" | "F" | "G" | null;
 
+export type listOfSeriesType = { name: SeriesNames; list: ExerciseItem[]; }[]
+
 export const ExerciseListA: ExerciseItem[] = [
     {
         key: "1",

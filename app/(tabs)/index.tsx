@@ -1,15 +1,13 @@
 import Exercises from "@/components/Exercises";
 import SerieSeletor from "@/components/SerieSeletor";
 import Timer from "@/components/Timer";
-import { ExerciseItem, listOfSeries, SeriesNames } from '@/constants/Data';
+import { listOfSeries, listOfSeriesType, SeriesNames } from '@/constants/Data';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 
-type listOfSeriesType = { name: SeriesNames; list: ExerciseItem[]; }[]
-
 export default function HomeScreen() {
-  const [listOfSeriesHook, setListOfSeriesHook]: [listOfSeriesType|null, React.Dispatch<React.SetStateAction<listOfSeriesType|null>>] = useState<listOfSeriesType|null>(null);
+  const [listOfSeriesHook, setListOfSeriesHook]: [listOfSeriesType | null, React.Dispatch<React.SetStateAction<listOfSeriesType | null>>] = useState<listOfSeriesType | null>(null);
   const [serie, setSerie]: [SeriesNames | null, React.Dispatch<React.SetStateAction<SeriesNames | null>>] = useState<SeriesNames | null>(null);
 
   const getData = async () => {
@@ -21,9 +19,7 @@ export default function HomeScreen() {
     }
   };
 
-  const storeData = async (
-    series: listOfSeriesType
-  ) => {
+  const storeData = async (series: listOfSeriesType) => {
     try {
       const jsonValue = JSON.stringify(series);
       await AsyncStorage.setItem('userdata', jsonValue);
