@@ -4,7 +4,7 @@ import SerieSeletor from "@/components/SerieSeletor";
 import Timer from "@/components/Timer";
 import { listOfSeries, listOfSeriesType, SeriesNames } from '@/constants/Data';
 import { useEffect, useState } from "react";
-import { View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 
 export default function HomeScreen() {
   const [listOfSeriesHook, setListOfSeriesHook]: [listOfSeriesType | null, React.Dispatch<React.SetStateAction<listOfSeriesType | null>>] = useState<listOfSeriesType | null>(null);
@@ -24,7 +24,13 @@ export default function HomeScreen() {
     });
   }, []);
 
-  if (serie === null && listOfSeriesHook !== null) {
+  if (listOfSeriesHook === null) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  } else if (serie === null && listOfSeriesHook !== null) {
     return (
       <SerieSeletor setSerie={setSerie} listOfSeries={listOfSeriesHook} />
     );
