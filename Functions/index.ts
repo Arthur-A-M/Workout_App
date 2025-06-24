@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { listOfSeriesType } from '@/constants/Data';
+import { listOfSeries, listOfSeriesType } from '@/constants/Data';
 
 export const getData = async () => {
     try {
@@ -19,3 +19,17 @@ export const storeData = async (series: listOfSeriesType) => {
         // saving error
     }
 };
+
+export function LoadData(setState: React.Dispatch<React.SetStateAction<listOfSeriesType | null>>) {
+    getData().then(data => {
+        if (data) {
+            setState(data);
+        } else {
+            storeData(listOfSeries).then(() => {
+                getData().then(data => {
+                    setState(data);
+                });
+            })
+        }
+    });
+}
