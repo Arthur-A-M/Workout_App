@@ -1,10 +1,11 @@
 import { getData, storeData } from "@/Functions";
 import Exercises from "@/components/Exercises";
+import Loading from "@/components/Loading";
 import SerieSeletor from "@/components/SerieSeletor";
 import Timer from "@/components/Timer";
 import { listOfSeries, listOfSeriesType, SeriesNames } from '@/constants/Data';
 import { useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { View } from "react-native";
 
 export default function HomeScreen() {
   const [listOfSeriesHook, setListOfSeriesHook]: [listOfSeriesType | null, React.Dispatch<React.SetStateAction<listOfSeriesType | null>>] = useState<listOfSeriesType | null>(null);
@@ -26,9 +27,7 @@ export default function HomeScreen() {
 
   if (listOfSeriesHook === null) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+      <Loading />
     );
   } else if (serie === null && listOfSeriesHook !== null) {
     return (
