@@ -24,10 +24,16 @@ export default function EditSeries({ listOfSeries, setState }: { listOfSeries: l
         setState([...listOfSeries, newSerie]);
     }
 
+    function SerieButton({ serieName }: { serieName: SeriesNames }) {
+        return (
+            <Pressable onPress={() => console.log(serieName)}><Text>{serieName}</Text></Pressable>
+        );
+    }
+
     return (
         <View style={styles.container}>
             <Text>Editar Série</Text>
-            {arrayOfSeries.map(serie => <Text key={serie}>{serie}</Text>)}
+            {arrayOfSeries.map(serieName => <SerieButton key={serieName} serieName={serieName} />)}
             <Pressable
                 onPress={handleAddSerie}
             ><Text>Adicionar</Text></Pressable>
