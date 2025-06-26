@@ -1,10 +1,18 @@
-import { listOfSeriesType } from "@/constants/Data";
+import { ExerciseItem, listOfSeriesType, SeriesNames } from "@/constants/Data";
 import { ReactElement } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import { styles } from "./styles";
 
 export default function EditSeries({ listOfSeries }: { listOfSeries: listOfSeriesType }): ReactElement {
+
+    function createSeriesItem(name: SeriesNames, list: ExerciseItem[]): {
+        name: SeriesNames;
+        list: ExerciseItem[];
+    } {
+        return { name, list };
+    }
+
     return (
         <View style={styles.container}>
             <Text>Editar Série</Text>
