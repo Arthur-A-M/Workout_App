@@ -20,7 +20,7 @@ export default function TabTwoScreen(): ReactElement {
   }
   else {
     return (
-      <EditSeries />
+      <EditSeries listOfSeries={listOfSeries} />
     );
   }
 }
