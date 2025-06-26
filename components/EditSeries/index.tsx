@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
 import { Text, View } from "react-native";
 
+import { styles } from "./styles";
+
 export default function EditSeries(): ReactElement {
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "column", backgroundColor: "white" }}>
+        <View style={styles.container}>
             <Text>Editar Série</Text>
         </View>
     );
