@@ -26,7 +26,11 @@ export default function EditSeries({ listOfSeries, setState }: { listOfSeries: l
 
     function SerieButton({ serieName }: { serieName: SeriesNames }) {
         return (
-            <Pressable onPress={() => console.log(serieName)}><Text>{serieName}</Text></Pressable>
+            <View style={{ flexDirection: 'row', gap: 10 }}>
+                <Pressable onPress={() => console.log(serieName)}><Text>{serieName}</Text></Pressable>
+                <Pressable onPress={() => setState(listOfSeries.filter(serie => serie.name !== serieName))}><Text>Remover</Text></Pressable>
+            </View>
+
         );
     }
 
