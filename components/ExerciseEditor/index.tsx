@@ -13,28 +13,22 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
 
     const [seriesList, setSeriesList]: [ExerciseItem[], React.Dispatch<React.SetStateAction<ExerciseItem[]>>] = useState<ExerciseItem[]>(ReturnSerie(serie));
 
-    function Exercise({
-        key,
-        name,
-        series,
-        repetitions,
-        weight
-    }: ExerciseItem) {
+    function Exercise({ index }: { index: number }) {
         return (
-            <View style={styles.page} key={key}>
+            <View style={styles.page}>
                 <View style={styles.box}>
-                    <Text>{name}</Text>
+                    <Text>{seriesList[index].name}</Text>
                     <View style={styles.boxRow}>
                         <Text>Séries</Text>
-                        <Text>{series}</Text>
+                        <Text>{seriesList[index].series}</Text>
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Repetições</Text>
-                        <Text>{repetitions}</Text>
+                        <Text>{seriesList[index].repetitions}</Text>
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Carga</Text>
-                        <Text>{weight}</Text>
+                        <Text>{seriesList[index].weight}</Text>
                     </View>
                 </View>
             </View>
@@ -45,13 +39,10 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
         <View style={styles.container}>
             <Pressable style={styles.backButton} onPress={() => setSerie(null)}><Text>⬅️</Text></Pressable>
             <PagerView style={styles.container} initialPage={0}>
-                {seriesList.map((item) => (
+                {seriesList.map((item, index) => (
                     <Exercise
-                        key={item.key}
-                        name={item.name}
-                        series={item.series}
-                        repetitions={item.repetitions}
-                        weight={item.weight}
+                        key={`${index}`}
+                        index={index}
                     />
                 ))}
                 <View style={styles.page}>
