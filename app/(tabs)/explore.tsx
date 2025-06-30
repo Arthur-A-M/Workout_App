@@ -22,9 +22,14 @@ export default function TabTwoScreen(): ReactElement {
       <Loading />
     );
   }
-  else {
+  else if (serie === null) {
     return (
       <EditSeries listOfSeries={listOfSeries} setSeriesList={setListOfSeries} setSeries={setSerie} />
+    );
+  }
+  else {
+    return (
+      <Loading />
     );
   }
 }
