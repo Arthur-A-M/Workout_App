@@ -30,7 +30,7 @@ export default function TabTwoScreen(): ReactElement {
   }
   else {
     return (
-      <ExerciseEditor serie={serie} />
+      <ExerciseEditor serie={serie} listOfSeries={listOfSeries} />
     );
   }
 }
