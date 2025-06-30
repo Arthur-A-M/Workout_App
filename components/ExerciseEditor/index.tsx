@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
@@ -10,7 +11,7 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
         return listOfSeries.find(s => s.name === serie)?.list || listOfSeries[0].list;
     }
 
-    const seriesList: ExerciseItem[] = ReturnSerie(serie);
+    const [seriesList, setSeriesList] = useState<ExerciseItem[]>(ReturnSerie(serie));
 
     function Exercise({
         key,
