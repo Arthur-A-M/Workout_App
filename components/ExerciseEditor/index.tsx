@@ -11,7 +11,7 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
         return listOfSeries.find(s => s.name === serie)?.list || listOfSeries[0].list;
     }
 
-    const [seriesList, setSeriesList] = useState<ExerciseItem[]>(ReturnSerie(serie));
+    const [seriesList, setSeriesList]: [ExerciseItem[], React.Dispatch<React.SetStateAction<ExerciseItem[]>>] = useState<ExerciseItem[]>(ReturnSerie(serie));
 
     function Exercise({
         key,
