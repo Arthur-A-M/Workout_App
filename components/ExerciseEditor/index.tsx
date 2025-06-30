@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
@@ -20,8 +19,6 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
         repetitions,
         weight
     }: ExerciseItem) {
-        const [done, setDone] = useState(false);
-
         return (
             <View style={styles.page} key={key}>
                 <View style={styles.box}>
@@ -38,10 +35,6 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
                         <Text>Carga</Text>
                         <Text>{weight}</Text>
                     </View>
-                    <Pressable style={styles.boxRow} onPress={() => setDone(!done)}>
-                        <Text>Feito?</Text>
-                        <Text>{done ? 'Sim' : 'Nao'}</Text>
-                    </Pressable>
                 </View>
             </View>
         );
