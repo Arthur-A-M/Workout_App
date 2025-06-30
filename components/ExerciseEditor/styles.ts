@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "lightgray"
   },
   boxRow: {
-     flexDirection: "row", 
-     justifyContent: "space-between"
+    flexDirection: "row",
+    justifyContent: "space-between"
   }
 });

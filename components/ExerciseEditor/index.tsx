@@ -53,6 +53,9 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
                         weight={item.weight}
                     />
                 ))}
+                <View style={styles.page}>
+                   <Pressable onPress={() => console.log('Adicionar')} style={styles.box}><Text>Adicionar</Text></Pressable> 
+                </View>
             </PagerView>
         </View>
     );
