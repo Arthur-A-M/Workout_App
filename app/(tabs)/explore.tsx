@@ -13,6 +13,10 @@ export default function TabTwoScreen(): ReactElement {
     console.log(listOfSeries);
   }, []);
 
+  useEffect(() => {
+    console.log('serie', serie);
+  }, [serie]);
+
   if (listOfSeries === null) {
     return (
       <Loading />
@@ -20,7 +24,7 @@ export default function TabTwoScreen(): ReactElement {
   }
   else {
     return (
-      <EditSeries listOfSeries={listOfSeries} setState={setListOfSeries} />
+      <EditSeries listOfSeries={listOfSeries} setSeriesList={setListOfSeries} setSeries={setSerie} />
     );
   }
 }

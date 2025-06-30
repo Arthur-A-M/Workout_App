@@ -4,7 +4,15 @@ import { Pressable, Text, View } from "react-native";
 
 import { styles } from "./styles";
 
-export default function EditSeries({ listOfSeries, setState }: { listOfSeries: listOfSeriesType, setState: React.Dispatch<React.SetStateAction<listOfSeriesType | null>> }): ReactElement {
+export default function EditSeries({ 
+    listOfSeries, 
+    setSeriesList,
+    setSeries
+}: { 
+    listOfSeries: listOfSeriesType, 
+    setSeriesList: React.Dispatch<React.SetStateAction<listOfSeriesType | null>>,
+    setSeries: React.Dispatch<React.SetStateAction<SeriesNames>>
+}): ReactElement {
 
     function createSeriesItem(name: SeriesNames, list: ExerciseItem[] = [{ key: '', name: '', series: '', repetitions: '', weight: '' }]): {
         name: SeriesNames;
@@ -21,14 +29,14 @@ export default function EditSeries({ listOfSeries, setState }: { listOfSeries: l
     const newSerie = createSeriesItem(newSerieName);
 
     const handleAddSerie = () => {
-        setState([...listOfSeries, newSerie]);
+        setSeriesList([...listOfSeries, newSerie]);
     }
 
     function SerieButton({ serieName }: { serieName: SeriesNames }) {
         return (
             <View style={{ flexDirection: 'row', gap: 10 }}>
-                <Pressable onPress={() => console.log(serieName)}><Text>{serieName}</Text></Pressable>
-                <Pressable onPress={() => setState(listOfSeries.filter(serie => serie.name !== serieName))}><Text>Remover</Text></Pressable>
+                <Pressable onPress={() => setSeries(serieName)}><Text>{serieName}</Text></Pressable>
+                <Pressable onPress={() => setSeriesList(listOfSeries.filter(serie => serie.name !== serieName))}><Text>Remover</Text></Pressable>
             </View>
 
         );
