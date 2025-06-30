@@ -6,7 +6,7 @@ import { ReactElement, useEffect, useState } from "react";
 
 export default function TabTwoScreen(): ReactElement {
   const [listOfSeries, setListOfSeries]: [listOfSeriesType | null, React.Dispatch<React.SetStateAction<listOfSeriesType | null>>] = useState<listOfSeriesType | null>(null);
-  const [serie, setSerie]: [SeriesNames | null, React.Dispatch<React.SetStateAction<SeriesNames | null>>] = useState<SeriesNames | null>(null);
+  const [serie, setSerie]: [SeriesNames, React.Dispatch<React.SetStateAction<SeriesNames>>] = useState<SeriesNames>(null);
 
   useEffect(() => {
     LoadData(setListOfSeries);
