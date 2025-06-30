@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 
 import { ExerciseItem, SeriesNames, listOfSeriesType } from '@/constants/Data';
@@ -20,15 +20,24 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
                     <Text>{seriesList[index].name}</Text>
                     <View style={styles.boxRow}>
                         <Text>Séries</Text>
-                        <Text>{seriesList[index].series}</Text>
+                        <TextInput 
+                            value={seriesList[index].series}
+                            onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, series: text } : item))}
+                        />
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Repetições</Text>
-                        <Text>{seriesList[index].repetitions}</Text>
+                        <TextInput 
+                            value={seriesList[index].repetitions}
+                            onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, repetitions: text } : item))}
+                        />
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Carga</Text>
-                        <Text>{seriesList[index].weight}</Text>
+                        <TextInput 
+                            value={seriesList[index].weight}
+                            onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, weight: text } : item))}
+                        />
                     </View>
                 </View>
             </View>
