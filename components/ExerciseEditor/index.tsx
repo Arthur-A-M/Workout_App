@@ -13,6 +13,10 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
 
     const [seriesList, setSeriesList]: [ExerciseItem[], React.Dispatch<React.SetStateAction<ExerciseItem[]>>] = useState<ExerciseItem[]>(ReturnSerie(serie));
 
+    function addExercise() {
+        setSeriesList([...seriesList, { key: '', name: '', series: '', repetitions: '', weight: '' }])
+    }
+
     function Exercise({ index }: { index: number }) {
         return (
             <View style={styles.page}>
@@ -55,7 +59,7 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
                     />
                 ))}
                 <View style={styles.page}>
-                   <Pressable onPress={() => console.log('Adicionar')} style={styles.box}><Text>Adicionar</Text></Pressable> 
+                   <Pressable onPress={() => addExercise()} style={styles.box}><Text>Adicionar</Text></Pressable> 
                 </View>
             </PagerView>
         </View>
