@@ -21,7 +21,10 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
         return (
             <View style={styles.page}>
                 <View style={styles.box}>
-                    <Text>{seriesList[index].name}</Text>
+                    <TextInput 
+                        value={seriesList[index].name}
+                        onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, name: text } : item))}
+                    />
                     <View style={styles.boxRow}>
                         <Text>Séries</Text>
                         <TextInput 
