@@ -18,32 +18,36 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
     }
 
     function Exercise({ index }: { index: number }) {
+        function handleChange(name: keyof ExerciseItem, text: string) {
+            setSeriesList(seriesList.map((item, i) => i === index ? { ...item, [name]: text } : item))
+        }
+
         return (
             <View style={styles.page}>
                 <View style={styles.box}>
                     <TextInput 
                         value={seriesList[index].name}
-                        onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, name: text } : item))}
+                        onChangeText={(text) => handleChange('name', text)}
                     />
                     <View style={styles.boxRow}>
                         <Text>Séries</Text>
                         <TextInput 
                             value={seriesList[index].series}
-                            onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, series: text } : item))}
+                            onChangeText={(text) => handleChange('series', text)}
                         />
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Repetições</Text>
                         <TextInput 
                             value={seriesList[index].repetitions}
-                            onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, repetitions: text } : item))}
+                            onChangeText={(text) => handleChange('repetitions', text)}
                         />
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Carga</Text>
                         <TextInput 
                             value={seriesList[index].weight}
-                            onChangeText={(text) => setSeriesList(seriesList.map((item, i) => i === index ? { ...item, weight: text } : item))}
+                            onChangeText={(text) => handleChange('weight', text)}
                         />
                     </View>
                 </View>
