@@ -12,6 +12,11 @@ export const styles = StyleSheet.create({
     left: 50,
     zIndex: 1
   },
+  saveButton: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center"
+  },
   page: {
     height: "100%",
     width: "100%",
@@ -22,9 +27,5 @@ export const styles = StyleSheet.create({
     height: 200,
     width: 150,
     backgroundColor: "lightgray"
-  },
-  boxRow: {
-    flexDirection: "row",
-    justifyContent: "space-between"
   }
 });
