@@ -18,8 +18,31 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
     }
 
     function Exercise({ index }: { index: number }) {
+        const [series, setSeries] = useState<number>(Number(seriesList[index].series));
+        const [repetitions, setRepetitions] = useState<number>(Number(seriesList[index].repetitions));
+
         function handleChange(name: keyof ExerciseItem, text: string) {
             setSeriesList(seriesList.map((item, i) => i === index ? { ...item, [name]: text } : item))
+        }
+
+        function handleSeriesIncrement() {
+            setSeries(series + 1);
+            handleChange('series', (series + 1).toString());
+        }
+
+        function handleSeriesDecrement() {
+            setSeries(series - 1);
+            handleChange('series', (series - 1).toString());
+        }
+
+        function handleRepetitionsIncrement() {
+            setRepetitions(repetitions + 1);
+            handleChange('repetitions', (repetitions + 1).toString());
+        }
+
+        function handleRepetitionsDecrement() {
+            setRepetitions(repetitions - 1);
+            handleChange('repetitions', (repetitions - 1).toString());
         }
 
         return (
@@ -30,18 +53,24 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
                         onChangeText={(text) => handleChange('name', text)}
                     />
                     <View style={styles.boxRow}>
-                        <Text>Séries</Text>
-                        <TextInput 
-                            value={seriesList[index].series}
-                            onChangeText={(text) => handleChange('series', text)}
-                        />
+                    <Text>Séries</Text>
+                        <Pressable onPress={handleSeriesDecrement}>
+                            <Text>-</Text>
+                        </Pressable>
+                        <Text>{series}</Text>
+                        <Pressable onPress={handleSeriesIncrement}>
+                            <Text>+</Text>
+                        </Pressable>
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Repetições</Text>
-                        <TextInput 
-                            value={seriesList[index].repetitions}
-                            onChangeText={(text) => handleChange('repetitions', text)}
-                        />
+                        <Pressable onPress={handleRepetitionsDecrement}>
+                            <Text>-</Text>
+                        </Pressable>
+                        <Text>{repetitions}</Text>
+                        <Pressable onPress={handleRepetitionsIncrement}>
+                            <Text>+</Text>
+                        </Pressable>
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Carga</Text>
