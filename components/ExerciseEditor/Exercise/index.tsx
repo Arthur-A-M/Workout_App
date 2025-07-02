@@ -5,7 +5,11 @@ import { styles } from './styles';
 
 export default function Exercise({ index, seriesList, setSeriesList }: { index: number, seriesList: ExerciseItem[], setSeriesList: React.Dispatch<React.SetStateAction<ExerciseItem[]>> }) {
     function handleChange(name: keyof ExerciseItem, text: string) {
-        setSeriesList(seriesList.map((item, i) => i === index ? { ...item, [name]: text } : item))
+        setSeriesList(seriesList.map((item, i) => i === index ? { ...item, [name]: text } : item));
+    }
+
+    function handleDelete() {
+        setSeriesList(seriesList.filter((_, i) => i !== index));
     }
 
     return (
@@ -39,6 +43,9 @@ export default function Exercise({ index, seriesList, setSeriesList }: { index: 
                         keyboardType="number-pad"
                     />
                 </View>
+            </View>
+            <View>
+                <Text onPress={handleDelete}>Deletar</Text>
             </View>
         </View>
     );
