@@ -20,6 +20,7 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
     function Exercise({ index }: { index: number }) {
         const [series, setSeries] = useState<number>(Number(seriesList[index].series));
         const [repetitions, setRepetitions] = useState<number>(Number(seriesList[index].repetitions));
+        const [weight, setWeight] = useState<number>(Number(seriesList[index].weight));
 
         function handleChange(name: keyof ExerciseItem, text: string) {
             setSeriesList(seriesList.map((item, i) => i === index ? { ...item, [name]: text } : item))
@@ -43,6 +44,16 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
         function handleRepetitionsDecrement() {
             setRepetitions(repetitions - 1);
             handleChange('repetitions', (repetitions - 1).toString());
+        }
+
+        function handleWeightIncrement() {
+            setWeight(weight + 0.5);
+            handleChange('weight', (weight + 0.5).toString());
+        }
+
+        function handleWeightDecrement() {
+            setWeight(weight - 0.5);
+            handleChange('weight', (weight - 0.5).toString());
         }
 
         return (
@@ -74,10 +85,13 @@ export default function ExerciseEditor({serie = 'A', setSerie, listOfSeries}: {s
                     </View>
                     <View style={styles.boxRow}>
                         <Text>Carga</Text>
-                        <TextInput 
-                            value={seriesList[index].weight}
-                            onChangeText={(text) => handleChange('weight', text)}
-                        />
+                        <Pressable onPress={handleWeightDecrement}>
+                            <Text>-</Text>
+                        </Pressable>
+                        <Text>{weight.toFixed(1)}</Text>
+                        <Pressable onPress={handleWeightIncrement}>
+                            <Text>+</Text>
+                        </Pressable>
                     </View>
                 </View>
             </View>
